@@ -13,6 +13,9 @@ import RecentlyProducts from '../components/dashboard/RecentlyProducts';
 import globalStyles from '../styles';
 import Data from '../data';
 import TablePage from '../containers/Tablepage';
+import { Widget } from 'react-chat-widget';
+
+import 'react-chat-widget/lib/styles.css';
 
 const DashboardPage = () => {
 
@@ -71,6 +74,8 @@ const DashboardPage = () => {
 
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
         <MonthlySales data={Data.dashBoardPage.monthlySales}/>
+        <Widget title="Athena Innovation Tool"
+          subtitle="How can i help you ?"/>
         </div>
       </div>
     </div>
