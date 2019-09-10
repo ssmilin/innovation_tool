@@ -1,4 +1,7 @@
 import React from 'react';
+import Carousel from "./Carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import {cyan600, pink600, purple600, orange600} from 'material-ui/styles/colors';
 import Assessment from 'material-ui/svg-icons/action/assessment';
 import Face from 'material-ui/svg-icons/action/face';
@@ -60,11 +63,12 @@ const DashboardPage = () => {
       </div>
 
       <div className="row">
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-md m-b-15">
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+          <Carousel />
+        </div>
+        <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9 m-b-15 ">
           <TablePage />
         </div>
-
-       
       </div>
 
       <div className="row">
