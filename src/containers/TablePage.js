@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Link} from 'react-router';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -8,8 +8,7 @@ import {pink500, grey200, grey500} from 'material-ui/styles/colors';
 import PageBase from '../components/PageBase';
 import Data from '../data';
 
-const TablePage = () => {
-
+//const TablePage = () => {
   const styles = {
     floatingActionButton: {
       margin: 0,
@@ -41,51 +40,52 @@ const TablePage = () => {
     }
   };
 
-  return (
-    <PageBase title="Your Ideas"
-              >
+class TablePage extends Component {
+  render() {
+    return (
+      <PageBase title="Your Ideas">
+        <div>
+          <Link to="/form" >
+            <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>
+              <ContentAdd />
+            </FloatingActionButton>
+          </Link>
 
-      <div>
-        <Link to="/form" >
-          <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>
-            <ContentAdd />
-          </FloatingActionButton>
-        </Link>
-
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderColumn style={styles.columns.id}>ID</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.name}>Title</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.price}>Status</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.category}>Category</TableHeaderColumn>
-              <TableHeaderColumn style={styles.columns.edit}>Edit</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {Data.tablePage.items.map(item =>
-              <TableRow key={item.id}>
-                <TableRowColumn style={styles.columns.id}>{item.id}</TableRowColumn>
-                <TableRowColumn style={styles.columns.name}>{item.name}</TableRowColumn>
-                <TableRowColumn style={styles.columns.price}>{item.price}</TableRowColumn>
-                <TableRowColumn style={styles.columns.category}>{item.category}</TableRowColumn>
-                <TableRowColumn style={styles.columns.edit}>
-                  <Link className="button" to="/form">
-                    <FloatingActionButton zDepth={0}
-                                          mini={true}
-                                          backgroundColor={grey200}
-                                          iconStyle={styles.editButton}>
-                      <ContentCreate  />
-                    </FloatingActionButton>
-                  </Link>
-                </TableRowColumn>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderColumn style={styles.columns.id}>ID</TableHeaderColumn>
+                <TableHeaderColumn style={styles.columns.name}>Title</TableHeaderColumn>
+                <TableHeaderColumn style={styles.columns.price}>Status</TableHeaderColumn>
+                <TableHeaderColumn style={styles.columns.category}>Category</TableHeaderColumn>
+                <TableHeaderColumn style={styles.columns.edit}>Edit</TableHeaderColumn>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>    
-      </div>
-    </PageBase>
-  );
+            </TableHeader>
+            <TableBody>
+              {Data.tablePage.items.map(item =>
+                <TableRow key={item.id}>
+                  <TableRowColumn style={styles.columns.id}>{item.id}</TableRowColumn>
+                  <TableRowColumn style={styles.columns.name}>{item.name}</TableRowColumn>
+                  <TableRowColumn style={styles.columns.price}>{item.price}</TableRowColumn>
+                  <TableRowColumn style={styles.columns.category}>{item.category}</TableRowColumn>
+                  <TableRowColumn style={styles.columns.edit}>
+                    <Link className="button" to="/form">
+                      <FloatingActionButton zDepth={0}
+                                            mini={true}
+                                            backgroundColor={grey200}
+                                            iconStyle={styles.editButton}>
+                        <ContentCreate  />
+                      </FloatingActionButton>
+                    </Link>
+                  </TableRowColumn>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>    
+        </div>
+      </PageBase>
+    );
+  }
 };
 
 export default TablePage;
